@@ -9,4 +9,6 @@ wheels/
 # Virtual environments
 .venv
 
-data/**.*
+data
+resnet18_cifar10.pt
+personal_notes.md
