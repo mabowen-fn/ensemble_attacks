@@ -1,0 +1,1074 @@
+{
+  "summary": {
+    "mifgsm": {
+      "asr": 1.0,
+      "avg_queries": 0.0,
+      "avg_linf": 0.014117676019668578,
+      "num_samples": 20
+    },
+    "nes_only": {
+      "asr": 0.4,
+      "avg_queries": 296.7,
+      "avg_linf": 0.027843165397644042,
+      "num_samples": 20
+    },
+    "static_hybrid": {
+      "asr": 1.0,
+      "avg_queries": 37.8,
+      "avg_linf": 0.014117676019668578,
+      "num_samples": 20
+    },
+    "elpd_blend": {
+      "asr": 1.0,
+      "avg_queries": 37.8,
+      "avg_linf": 0.014117676019668578,
+      "num_samples": 20
+    }
+  },
+  "detailed": {
+    "mifgsm": [
+      {
+        "success": true,
+        "queries": 0,
+        "steps": 2,
+        "linf": 0.01568630337715149,
+        "eta_history": [
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 0,
+        "steps": 3,
+        "linf": 0.02352944016456604,
+        "eta_history": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 0,
+        "steps": 2,
+        "linf": 0.01568630337715149,
+        "eta_history": [
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 0,
+        "steps": 1,
+        "linf": 0.007843166589736938,
+        "eta_history": [
+          1.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 0,
+        "steps": 2,
+        "linf": 0.01568630337715149,
+        "eta_history": [
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 0,
+        "steps": 2,
+        "linf": 0.01568630337715149,
+        "eta_history": [
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 0,
+        "steps": 1,
+        "linf": 0.007843166589736938,
+        "eta_history": [
+          1.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 0,
+        "steps": 2,
+        "linf": 0.01568630337715149,
+        "eta_history": [
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 0,
+        "steps": 1,
+        "linf": 0.007843166589736938,
+        "eta_history": [
+          1.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 0,
+        "steps": 1,
+        "linf": 0.007843166589736938,
+        "eta_history": [
+          1.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 0,
+        "steps": 1,
+        "linf": 0.007843166589736938,
+        "eta_history": [
+          1.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 0,
+        "steps": 4,
+        "linf": 0.03137257695198059,
+        "eta_history": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 0,
+        "steps": 1,
+        "linf": 0.007843166589736938,
+        "eta_history": [
+          1.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 0,
+        "steps": 3,
+        "linf": 0.02352944016456604,
+        "eta_history": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 0,
+        "steps": 2,
+        "linf": 0.01568630337715149,
+        "eta_history": [
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 0,
+        "steps": 2,
+        "linf": 0.01568630337715149,
+        "eta_history": [
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 0,
+        "steps": 1,
+        "linf": 0.007843166589736938,
+        "eta_history": [
+          1.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 0,
+        "steps": 1,
+        "linf": 0.007843166589736938,
+        "eta_history": [
+          1.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 0,
+        "steps": 2,
+        "linf": 0.01568630337715149,
+        "eta_history": [
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 0,
+        "steps": 2,
+        "linf": 0.01568630337715149,
+        "eta_history": [
+          1.0,
+          1.0
+        ]
+      }
+    ],
+    "nes_only": [
+      {
+        "success": false,
+        "queries": 421,
+        "steps": 20,
+        "linf": 0.03137257695198059,
+        "eta_history": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "success": false,
+        "queries": 421,
+        "steps": 20,
+        "linf": 0.03137257695198059,
+        "eta_history": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "success": false,
+        "queries": 421,
+        "steps": 20,
+        "linf": 0.03137257695198059,
+        "eta_history": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 273,
+        "steps": 13,
+        "linf": 0.03137257695198059,
+        "eta_history": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "success": false,
+        "queries": 421,
+        "steps": 20,
+        "linf": 0.03137257695198059,
+        "eta_history": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "success": false,
+        "queries": 421,
+        "steps": 20,
+        "linf": 0.03137257695198059,
+        "eta_history": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 21,
+        "steps": 1,
+        "linf": 0.007843166589736938,
+        "eta_history": [
+          0.0
+        ]
+      },
+      {
+        "success": false,
+        "queries": 421,
+        "steps": 20,
+        "linf": 0.03137257695198059,
+        "eta_history": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 147,
+        "steps": 7,
+        "linf": 0.03137257695198059,
+        "eta_history": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 21,
+        "steps": 1,
+        "linf": 0.007843166589736938,
+        "eta_history": [
+          0.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 105,
+        "steps": 5,
+        "linf": 0.03137257695198059,
+        "eta_history": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "success": false,
+        "queries": 421,
+        "steps": 20,
+        "linf": 0.03137257695198059,
+        "eta_history": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 21,
+        "steps": 1,
+        "linf": 0.007843166589736938,
+        "eta_history": [
+          0.0
+        ]
+      },
+      {
+        "success": false,
+        "queries": 421,
+        "steps": 20,
+        "linf": 0.03137257695198059,
+        "eta_history": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "success": false,
+        "queries": 421,
+        "steps": 20,
+        "linf": 0.03137257695198059,
+        "eta_history": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "success": false,
+        "queries": 421,
+        "steps": 20,
+        "linf": 0.03137257695198059,
+        "eta_history": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 84,
+        "steps": 4,
+        "linf": 0.03137257695198059,
+        "eta_history": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 210,
+        "steps": 10,
+        "linf": 0.03137257695198059,
+        "eta_history": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "success": false,
+        "queries": 421,
+        "steps": 20,
+        "linf": 0.03137257695198059,
+        "eta_history": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "success": false,
+        "queries": 421,
+        "steps": 20,
+        "linf": 0.03137257695198059,
+        "eta_history": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    ],
+    "static_hybrid": [
+      {
+        "success": true,
+        "queries": 42,
+        "steps": 2,
+        "linf": 0.01568630337715149,
+        "eta_history": [
+          0.5,
+          0.5
+        ]
+      },
+      {
+        "success": true,
+        "queries": 63,
+        "steps": 3,
+        "linf": 0.02352944016456604,
+        "eta_history": [
+          0.5,
+          0.5,
+          0.5
+        ]
+      },
+      {
+        "success": true,
+        "queries": 42,
+        "steps": 2,
+        "linf": 0.01568630337715149,
+        "eta_history": [
+          0.5,
+          0.5
+        ]
+      },
+      {
+        "success": true,
+        "queries": 21,
+        "steps": 1,
+        "linf": 0.007843166589736938,
+        "eta_history": [
+          0.5
+        ]
+      },
+      {
+        "success": true,
+        "queries": 42,
+        "steps": 2,
+        "linf": 0.01568630337715149,
+        "eta_history": [
+          0.5,
+          0.5
+        ]
+      },
+      {
+        "success": true,
+        "queries": 42,
+        "steps": 2,
+        "linf": 0.01568630337715149,
+        "eta_history": [
+          0.5,
+          0.5
+        ]
+      },
+      {
+        "success": true,
+        "queries": 21,
+        "steps": 1,
+        "linf": 0.007843166589736938,
+        "eta_history": [
+          0.5
+        ]
+      },
+      {
+        "success": true,
+        "queries": 42,
+        "steps": 2,
+        "linf": 0.01568630337715149,
+        "eta_history": [
+          0.5,
+          0.5
+        ]
+      },
+      {
+        "success": true,
+        "queries": 21,
+        "steps": 1,
+        "linf": 0.007843166589736938,
+        "eta_history": [
+          0.5
+        ]
+      },
+      {
+        "success": true,
+        "queries": 21,
+        "steps": 1,
+        "linf": 0.007843166589736938,
+        "eta_history": [
+          0.5
+        ]
+      },
+      {
+        "success": true,
+        "queries": 21,
+        "steps": 1,
+        "linf": 0.007843166589736938,
+        "eta_history": [
+          0.5
+        ]
+      },
+      {
+        "success": true,
+        "queries": 84,
+        "steps": 4,
+        "linf": 0.03137257695198059,
+        "eta_history": [
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ]
+      },
+      {
+        "success": true,
+        "queries": 21,
+        "steps": 1,
+        "linf": 0.007843166589736938,
+        "eta_history": [
+          0.5
+        ]
+      },
+      {
+        "success": true,
+        "queries": 63,
+        "steps": 3,
+        "linf": 0.02352944016456604,
+        "eta_history": [
+          0.5,
+          0.5,
+          0.5
+        ]
+      },
+      {
+        "success": true,
+        "queries": 42,
+        "steps": 2,
+        "linf": 0.01568630337715149,
+        "eta_history": [
+          0.5,
+          0.5
+        ]
+      },
+      {
+        "success": true,
+        "queries": 42,
+        "steps": 2,
+        "linf": 0.01568630337715149,
+        "eta_history": [
+          0.5,
+          0.5
+        ]
+      },
+      {
+        "success": true,
+        "queries": 21,
+        "steps": 1,
+        "linf": 0.007843166589736938,
+        "eta_history": [
+          0.5
+        ]
+      },
+      {
+        "success": true,
+        "queries": 21,
+        "steps": 1,
+        "linf": 0.007843166589736938,
+        "eta_history": [
+          0.5
+        ]
+      },
+      {
+        "success": true,
+        "queries": 42,
+        "steps": 2,
+        "linf": 0.01568630337715149,
+        "eta_history": [
+          0.5,
+          0.5
+        ]
+      },
+      {
+        "success": true,
+        "queries": 42,
+        "steps": 2,
+        "linf": 0.01568630337715149,
+        "eta_history": [
+          0.5,
+          0.5
+        ]
+      }
+    ],
+    "elpd_blend": [
+      {
+        "success": true,
+        "queries": 42,
+        "steps": 2,
+        "linf": 0.01568630337715149,
+        "eta_history": [
+          0.550000011920929,
+          0.6850000083446502
+        ]
+      },
+      {
+        "success": true,
+        "queries": 63,
+        "steps": 3,
+        "linf": 0.02352944016456604,
+        "eta_history": [
+          0.800000011920929,
+          0.7100000083446503,
+          0.6470000058412552
+        ]
+      },
+      {
+        "success": true,
+        "queries": 42,
+        "steps": 2,
+        "linf": 0.01568630337715149,
+        "eta_history": [
+          0.8999999761581421,
+          0.9299999833106993
+        ]
+      },
+      {
+        "success": true,
+        "queries": 21,
+        "steps": 1,
+        "linf": 0.007843166589736938,
+        "eta_history": [
+          1.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 42,
+        "steps": 2,
+        "linf": 0.01568630337715149,
+        "eta_history": [
+          0.6499999761581421,
+          0.6649999797344207
+        ]
+      },
+      {
+        "success": true,
+        "queries": 42,
+        "steps": 2,
+        "linf": 0.01568630337715149,
+        "eta_history": [
+          0.8999999761581421,
+          0.9299999833106993
+        ]
+      },
+      {
+        "success": true,
+        "queries": 21,
+        "steps": 1,
+        "linf": 0.007843166589736938,
+        "eta_history": [
+          0.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 42,
+        "steps": 2,
+        "linf": 0.01568630337715149,
+        "eta_history": [
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 21,
+        "steps": 1,
+        "linf": 0.007843166589736938,
+        "eta_history": [
+          1.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 21,
+        "steps": 1,
+        "linf": 0.007843166589736938,
+        "eta_history": [
+          0.949999988079071
+        ]
+      },
+      {
+        "success": true,
+        "queries": 21,
+        "steps": 1,
+        "linf": 0.007843166589736938,
+        "eta_history": [
+          1.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 84,
+        "steps": 4,
+        "linf": 0.03137257695198059,
+        "eta_history": [
+          0.6000000238418579,
+          0.7200000166893006,
+          0.5940000152587891,
+          0.7008000071048737
+        ]
+      },
+      {
+        "success": true,
+        "queries": 21,
+        "steps": 1,
+        "linf": 0.007843166589736938,
+        "eta_history": [
+          0.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 63,
+        "steps": 3,
+        "linf": 0.02352944016456604,
+        "eta_history": [
+          0.75,
+          0.7050000071525573,
+          0.7935000050067901
+        ]
+      },
+      {
+        "success": true,
+        "queries": 42,
+        "steps": 2,
+        "linf": 0.01568630337715149,
+        "eta_history": [
+          1.0,
+          0.9400000035762787
+        ]
+      },
+      {
+        "success": true,
+        "queries": 42,
+        "steps": 2,
+        "linf": 0.01568630337715149,
+        "eta_history": [
+          0.550000011920929,
+          0.6100000083446502
+        ]
+      },
+      {
+        "success": true,
+        "queries": 21,
+        "steps": 1,
+        "linf": 0.007843166589736938,
+        "eta_history": [
+          1.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 21,
+        "steps": 1,
+        "linf": 0.007843166589736938,
+        "eta_history": [
+          1.0
+        ]
+      },
+      {
+        "success": true,
+        "queries": 42,
+        "steps": 2,
+        "linf": 0.01568630337715149,
+        "eta_history": [
+          0.4000000059604645,
+          0.5350000113248825
+        ]
+      },
+      {
+        "success": true,
+        "queries": 42,
+        "steps": 2,
+        "linf": 0.01568630337715149,
+        "eta_history": [
+          0.800000011920929,
+          0.7250000119209289
+        ]
+      }
+    ]
+  },
+  "config": {
+    "num_samples": 20,
+    "epsilon": 0.03137254901960784,
+    "num_steps": 20,
+    "query_budget": 1000
+  }
+}

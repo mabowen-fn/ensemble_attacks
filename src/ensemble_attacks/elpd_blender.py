@@ -103,7 +103,7 @@ class BlendResult:
     diagnostics: dict           # extra tensors for logging / W&B
 
 
-# ── PSIS utilities ───────────────────────────────────────────────────────────
+# ── PSIS utilities ────────────────────────────────────────────────────────────
 
 def _fit_pareto_tail(log_weights: Tensor, tail_fraction: float = 0.2) -> float:
     """
@@ -397,3 +397,189 @@ class ELPDBlender:
         Efficient vectorised implementation
         ─────────────────────────────────────
         LOO mean_{j≠i} = (q·g_mean − g_tgt_i) / (q − 1)
+
+        So:
+            μ_LOO_i(η) = η·g_sur + (1−η)·(q·g_mean − g_tgt_i)/(q−1)
+
+        This is computable without any Python loop — shape (q, n_grid, D).
+
+        The WAIC penalty (inconsistency across draws) is:
+            p_waic(η) = T · std_i[score_i(η)]
+
+        High std means the surrogate is helpful for some draws and harmful for
+        others — genuine uncertainty about η — so we penalise it.
+        """
+        q, D = g_tgt.shape
+
+        if q < 2:
+            # Cannot do LOO with a single draw; fall back to cosine proxy
+            return self._cosine_var_elpd(g_sur, g_tgt, g_mean)
+
+        # ── LOO mean for each draw i — shape (q, D) ───────────────────────
+        # mean_{j≠i} = (q·g_mean − g_tgt_i) / (q − 1)
+        g_loo_mean = (q * g_mean.unsqueeze(0) - g_tgt) / (q - 1)   # (q, D)
+
+        # ── Blended LOO mean for every (i, η) — shape (q, n_grid, D) ──────
+        # mu_LOO_i(η) = η·g_sur + (1−η)·g_loo_mean_i
+        # = g_loo_mean_i + η·(g_sur − g_loo_mean_i)
+        delta = g_sur.unsqueeze(0) - g_loo_mean                     # (q, D)
+        # eta_grid: (n_grid,)  →  (1, n_grid, 1) for broadcasting
+        mu_loo = (
+            g_loo_mean.unsqueeze(1)                                  # (q, 1, D)
+            + self.eta_grid.view(1, -1, 1) * delta.unsqueeze(1)     # (q, n_grid, D)
+        )                                                            # (q, n_grid, D)
+
+        # ── Cosine similarity between μ_LOO_i(η) and g_tgt_i ─────────────
+        # g_tgt: (q, D) → (q, 1, D) for broadcasting against (q, n_grid, D)
+        g_tgt_exp = g_tgt.unsqueeze(1)                              # (q, 1, D)
+        num   = (mu_loo * g_tgt_exp).sum(dim=-1)                   # (q, n_grid)
+        denom = (
+            mu_loo.norm(dim=-1).clamp(min=1e-12)
+            * g_tgt_exp.norm(dim=-1).clamp(min=1e-12)
+        )                                                            # (q, n_grid)
+        cos_scores = num / denom                                     # (q, n_grid)
+
+        # ── ELPD: mean LOO cosine score ────────────────────────────────────
+        lppd_per_eta = cos_scores.mean(dim=0)                       # (n_grid,)
+
+        # ── p_WAIC: inconsistency penalty ─────────────────────────────────
+        T      = self.cfg.waic.llik_temperature
+        p_waic = cos_scores.std(dim=0, unbiased=True).clamp(min=0.0)
+
+        return lppd_per_eta - T * p_waic                            # (n_grid,)
+
+    def _loo_psis_elpd(
+        self,
+        g_sur: Tensor,      # (D,)
+        g_tgt: Tensor,      # (q, D)
+        g_mean: Tensor,     # (D,)
+    ) -> tuple[Tensor, float]:
+        """
+        LOO-PSIS ELPD over the η grid.  Returns (elpd_scores, pareto_k̂).
+
+        LOO-PSIS approximates E[log p(g_i | g_{-i})] — the predictive density
+        when observation i is left out — via importance sampling:
+
+            p(g_i | g_{-i}) ≈ [ Σ_j w_ij · p(g_i | μ_j) ] / Σ_j w_ij
+
+        Leave-one-out IS weights in the Gaussian case:
+            log w_ij = −log p(g_i | μ_j) = +||g_i − μ_j||² / (2σ²) + const
+            (removing observation i's contribution flips the sign of its residual)
+
+        We then Pareto-smooth these weights per observation i using the GPD
+        tail estimator (Vehtari et al., 2017).  The worst-case Pareto k̂ across
+        all observations determines reliability.
+
+        Shape conventions:
+            mu_eta:   (n_grid, D)
+            llik_ij:  (q, n_grid)   — row i = draw i, col j = η_j
+            log_w_ij: (q, n_grid)   — LOO IS log weights
+        """
+        q_val, D_val = g_tgt.shape
+
+        if q_val < 2:
+            return self._cosine_var_elpd(g_sur, g_tgt, g_mean), 0.0
+
+        # LOO mean and blended LOO mean — same geometry as _waic_elpd
+        g_loo_mean = (q_val * g_mean.unsqueeze(0) - g_tgt) / (q_val - 1)   # (q, D)
+        delta      = g_sur.unsqueeze(0) - g_loo_mean                        # (q, D)
+        mu_loo = (
+            g_loo_mean.unsqueeze(1)
+            + self.eta_grid.view(1, -1, 1) * delta.unsqueeze(1)
+        )                                                                    # (q, n_grid, D)
+
+        # Cosine scores — (q, n_grid)
+        g_tgt_exp = g_tgt.unsqueeze(1)
+        num       = (mu_loo * g_tgt_exp).sum(dim=-1)
+        denom     = (
+            mu_loo.norm(dim=-1).clamp(min=1e-12)
+            * g_tgt_exp.norm(dim=-1).clamp(min=1e-12)
+        )
+        cos_scores = num / denom                                             # (q, n_grid)
+
+        # LOO-PSIS: use cos_scores as log-likelihood proxy
+        llik_ij  = cos_scores                                               # (q, n_grid)
+        log_w_ij = -llik_ij                                                 # flip for LOO weights
+
+        # Pareto-smooth weights per observation, estimate worst k̂
+        max_k_hat = 0.0
+        smoothed_log_w = torch.zeros_like(log_w_ij)
+        for i in range(q_val):
+            k_i = _fit_pareto_tail(log_w_ij[i])
+            max_k_hat = max(max_k_hat, k_i)
+            smoothed_log_w[i] = _psis_smooth(log_w_ij[i])
+
+        # Numerically stable IS expectation (log-sum-exp trick)
+        # E[p(g_i | g_{-i})] = softmax(smoothed_w) · p(g_i | mu)
+        # shape after softmax(dim=0): (q, n_grid)
+        log_weights_stable = smoothed_log_w - smoothed_log_w.logsumexp(dim=0, keepdim=True)
+        weights_norm       = log_weights_stable.exp()               # (q, n_grid)
+
+        # Weighted log predictive density per η
+        loo_lppd = (weights_norm * llik_ij).sum(dim=0)              # (n_grid,)
+
+        return loo_lppd, max_k_hat
+
+    def _cosine_var_elpd(
+        self,
+        g_sur: Tensor,      # (D,)
+        g_tgt: Tensor,      # (q, D)
+        g_mean: Tensor,     # (D,)
+    ) -> Tensor:
+        """
+        Fast cosine-variance ELPD proxy for the low-sample regime (q < 4).
+
+        elpd_proxy(η) = cos(g_blend(η), ĝ_target) − λ · mean_i[||g_i − g_blend(η)||²]
+
+        The first term rewards alignment between the blended direction and the
+        target mean gradient (directional accuracy).
+        The second term penalises spread of the NES draws around the blended mean
+        (a proxy for predictive uncertainty).
+
+        This is a heuristic, not a proper ELPD.  It is only invoked when we have
+        too few samples to estimate the WAIC variance term reliably.
+        """
+        lam = self.cfg.cosine_var.var_weight
+
+        mu_eta = (
+            self.eta_grid.unsqueeze(1) * g_sur.unsqueeze(0)
+            + (1.0 - self.eta_grid).unsqueeze(1) * g_mean.unsqueeze(0)
+        )                                                             # (n_grid, D)
+
+        # Cosine similarity between blended gradient and target mean — (n_grid,)
+        cos_sim = torch.nn.functional.cosine_similarity(
+            mu_eta, g_mean.unsqueeze(0).expand_as(mu_eta), dim=1
+        )
+
+        # Mean squared deviation of each NES draw from the blended mean — (n_grid,)
+        # g_tgt: (q, D), mu_eta: (n_grid, D) → residuals: (q, n_grid, D)
+        residuals   = g_tgt.unsqueeze(1) - mu_eta.unsqueeze(0)
+        mean_sq_dev = residuals.pow(2).sum(dim=-1).mean(dim=0)       # (n_grid,)
+
+        # Normalise variance term to [0, 1] so λ is scale-invariant
+        mean_sq_dev_norm = mean_sq_dev / (mean_sq_dev.max() + 1e-12)
+
+        return cos_sim - lam * mean_sq_dev_norm                      # (n_grid,)
+
+    # ── utilities ─────────────────────────────────────────────────────────────
+
+    @staticmethod
+    def _linf_normalise(g: Tensor) -> Tensor:
+        """
+        Project gradient onto the unit ℓ∞ ball: g / (||g||_∞ + ε).
+
+        Handles both (D,) and (q, D) inputs.
+        We add 1e-12 to avoid division by zero for zero gradients
+        (which can appear early in the attack on well-classified images).
+        """
+        if g.dim() == 1:
+            return g / (g.abs().max() + 1e-12)
+        else:
+            # Per-row normalisation for (q, D)
+            max_vals = g.abs().amax(dim=1, keepdim=True)
+            return g / (max_vals + 1e-12)
+
+    def reset(self) -> None:
+        """Reset EMA state — call between images."""
+        self._eta_ema    = 0.5
+        self._step_count = 0
