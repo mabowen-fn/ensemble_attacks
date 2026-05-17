@@ -9,6 +9,9 @@ wheels/
 # Virtual environments
 .venv
 
+.github
+
 data
 resnet18_cifar10.pt
-personal_notes.md
+notes
+papers
