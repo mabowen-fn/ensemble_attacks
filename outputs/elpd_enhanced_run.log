@@ -1,0 +1,61 @@
+Using device: mps
+
+Loading CIFAR-10 test set...
+Loading ResNet18 (surrogate)...
+Loading VGG16 (target)...
+
+Running attacks on 50 CIFAR-10 test samples...
+Surrogate: ResNet18 | Target: VGG16 (different architectures)
+----------------------------------------------------------------------
+
+[10/50] mif:✓ nes:✓ sta:✓ elp:✓
+
+[20/50] mif:✗ nes:✗ sta:✗ elp:✗
+
+[30/50] mif:✗ nes:✗ sta:✗ elp:✗
+
+[40/50] mif:✗ nes:✗ sta:✗ elp:✗
+
+[50/50] mif:✓ nes:✓ sta:✓ elp:✓
+
+======================================================================
+EXPERIMENT RESULTS: Cross-Architecture ELPD-Blend
+======================================================================
+
+MIFGSM
+  ASR (Attack Success Rate): 66.0%
+  Avg Queries: 0.0 / 500
+  Avg L∞ perturbation: 0.0246 (ε = 0.0314)
+
+NES_ONLY
+  ASR (Attack Success Rate): 58.0%
+  Avg Queries: 268.0 / 500
+  Avg L∞ perturbation: 0.0275 (ε = 0.0314)
+
+STATIC_HYBRID
+  ASR (Attack Success Rate): 66.0%
+  Avg Queries: 181.2 / 500
+  Avg L∞ perturbation: 0.0246 (ε = 0.0314)
+
+ELPD_BLEND
+  ASR (Attack Success Rate): 66.0%
+  Avg Queries: 182.2 / 500
+  Avg L∞ perturbation: 0.0245 (ε = 0.0314)
+
+======================================================================
+ANALYSIS: Black-and-White Power-Likelihood Hypothesis
+======================================================================
+
+Transfer-only (MI-FGSM): 66.0%
+Query-only (NES): 58.0%
+Fixed blend (Static Hybrid 50/50): 66.0%
+Adaptive blend (ELPD-Blend): 66.0%
+
+✓ HYPOTHESIS VALIDATED: Adaptive blending meets or exceeds all baselines!
+
+Query efficiency (lower is better):
+  ELPD-Blend: 182.2 queries/sample
+  Static Hybrid: 181.2 queries/sample
+  NES-only: 268.0 queries/sample
+
+✓ Results saved to outputs/elpd_enhanced_experiment/results.json
