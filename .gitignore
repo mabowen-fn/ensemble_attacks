@@ -1,3 +1,5 @@
+.DS_Store
+
 # Python-generated files
 __pycache__/
 *.py[oc]
@@ -9,6 +11,10 @@ wheels/
 # Virtual environments
 .venv
 
+.github
+
 data
 resnet18_cifar10.pt
-personal_notes.md
+notes
+papers
+README.md

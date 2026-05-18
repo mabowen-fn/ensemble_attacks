@@ -1,0 +1,7 @@
+,,success,success,success,queries,queries,linf,linf
+,,sum,count,mean,mean,std,mean,std
+dataset,attack,,,,,,,
+cifar10,elpd_blend,42,50,0.84,55.24,88.5084,0.0116,0.0087
+cifar10,mifgsm,42,50,0.84,0.0,0.0,0.0116,0.0087
+cifar10,nes_only,42,50,0.84,55.24,88.5084,0.0116,0.0087
+cifar10,static_hybrid,42,50,0.84,55.24,88.5084,0.0116,0.0087

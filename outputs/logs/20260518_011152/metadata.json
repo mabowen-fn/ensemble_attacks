@@ -1,0 +1,9 @@
+{
+  "exp_id": "20260518_011152",
+  "timestamp": "2026-05-18T01:11:52",
+  "python_version": "3.13.5",
+  "platform": "macOS-15.7.5-arm64-arm-64bit-Mach-O",
+  "hostname": "Eyoels-MacBook-Air.local",
+  "pytorch_version": "2.12.0",
+  "cuda_available": false
+}

@@ -1,0 +1,165 @@
+Using device: mps
+Loading CIFAR-10...
+Loading surrogate from resnet18_cifar10.pt
+
+Running attacks on 20 CIFAR-10 test samples...
+
+[1/20] Label: 3
+  Running mifgsm... ✗ (queries: 0)
+  Running nes_only... ✗ (queries: 421)
+  Running static_hybrid... ✗ (queries: 0)
+  Running elpd_blend... ✗ (queries: 0)
+
+[2/20] Label: 8
+  Running mifgsm... ✗ (queries: 0)
+  Running nes_only... ✗ (queries: 421)
+  Running static_hybrid... ✗ (queries: 0)
+  Running elpd_blend... ✗ (queries: 0)
+
+[3/20] Label: 8
+  Running mifgsm... ✗ (queries: 0)
+  Running nes_only... ✗ (queries: 421)
+  Running static_hybrid... ✗ (queries: 0)
+  Running elpd_blend... ✗ (queries: 0)
+
+[4/20] Label: 0
+  Running mifgsm... ✗ (queries: 0)
+  Running nes_only... ✓ (queries: 315)
+  Running static_hybrid... ✗ (queries: 0)
+  Running elpd_blend... ✗ (queries: 0)
+
+[5/20] Label: 6
+  Running mifgsm... ✗ (queries: 0)
+  Running nes_only... ✗ (queries: 421)
+  Running static_hybrid... ✗ (queries: 0)
+  Running elpd_blend... ✗ (queries: 0)
+
+[6/20] Label: 6
+  Running mifgsm... ✗ (queries: 0)
+  Running nes_only... ✗ (queries: 421)
+  Running static_hybrid... ✗ (queries: 0)
+  Running elpd_blend... ✗ (queries: 0)
+
+[7/20] Label: 1
+  Running mifgsm... ✗ (queries: 0)
+  Running nes_only... ✓ (queries: 21)
+  Running static_hybrid... ✗ (queries: 0)
+  Running elpd_blend... ✗ (queries: 0)
+
+[8/20] Label: 6
+  Running mifgsm... ✗ (queries: 0)
+  Running nes_only... ✗ (queries: 421)
+  Running static_hybrid... ✗ (queries: 0)
+  Running elpd_blend... ✗ (queries: 0)
+
+[9/20] Label: 3
+  Running mifgsm... ✗ (queries: 0)
+  Running nes_only... ✓ (queries: 126)
+  Running static_hybrid... ✗ (queries: 0)
+  Running elpd_blend... ✗ (queries: 0)
+
+[10/20] Label: 1
+  Running mifgsm... ✗ (queries: 0)
+  Running nes_only... ✓ (queries: 21)
+  Running static_hybrid... ✗ (queries: 0)
+  Running elpd_blend... ✗ (queries: 0)
+
+[11/20] Label: 0
+  Running mifgsm... ✗ (queries: 0)
+  Running nes_only... ✓ (queries: 84)
+  Running static_hybrid... ✗ (queries: 0)
+  Running elpd_blend... ✗ (queries: 0)
+
+[12/20] Label: 9
+  Running mifgsm... ✗ (queries: 0)
+  Running nes_only... ✗ (queries: 421)
+  Running static_hybrid... ✗ (queries: 0)
+  Running elpd_blend... ✗ (queries: 0)
+
+[13/20] Label: 5
+  Running mifgsm... ✗ (queries: 0)
+  Running nes_only... ✓ (queries: 21)
+  Running static_hybrid... ✗ (queries: 0)
+  Running elpd_blend... ✗ (queries: 0)
+
+[14/20] Label: 7
+  Running mifgsm... ✗ (queries: 0)
+  Running nes_only... ✗ (queries: 421)
+  Running static_hybrid... ✗ (queries: 0)
+  Running elpd_blend... ✗ (queries: 0)
+
+[15/20] Label: 9
+  Running mifgsm... ✗ (queries: 0)
+  Running nes_only... ✗ (queries: 421)
+  Running static_hybrid... ✗ (queries: 0)
+  Running elpd_blend... ✗ (queries: 0)
+
+[16/20] Label: 8
+  Running mifgsm... ✗ (queries: 0)
+  Running nes_only... ✗ (queries: 421)
+  Running static_hybrid... ✗ (queries: 0)
+  Running elpd_blend... ✗ (queries: 0)
+
+[17/20] Label: 5
+  Running mifgsm... ✗ (queries: 0)
+  Running nes_only... ✓ (queries: 84)
+  Running static_hybrid... ✗ (queries: 0)
+  Running elpd_blend... ✗ (queries: 0)
+
+[18/20] Label: 7
+  Running mifgsm... ✗ (queries: 0)
+  Running nes_only... ✓ (queries: 315)
+  Running static_hybrid... ✗ (queries: 0)
+  Running elpd_blend... ✗ (queries: 0)
+
+[19/20] Label: 8
+  Running mifgsm... ✗ (queries: 0)
+  Running nes_only... ✗ (queries: 421)
+  Running static_hybrid... ✗ (queries: 0)
+  Running elpd_blend... ✗ (queries: 0)
+
+[20/20] Label: 6
+  Running mifgsm... ✗ (queries: 0)
+  Running nes_only... ✗ (queries: 421)
+  Running static_hybrid... ✗ (queries: 0)
+  Running elpd_blend... ✗ (queries: 0)
+
+======================================================================
+EXPERIMENT RESULTS
+======================================================================
+
+MIFGSM
+  ASR (Attack Success Rate): 0.00%
+  Avg Queries: 0.0
+  Avg L∞ perturbation: 0.0000 (ε = 0.0314)
+
+NES_ONLY
+  ASR (Attack Success Rate): 40.00%
+  Avg Queries: 301.9
+  Avg L∞ perturbation: 0.0278 (ε = 0.0314)
+
+STATIC_HYBRID
+  ASR (Attack Success Rate): 0.00%
+  Avg Queries: 0.0
+  Avg L∞ perturbation: 0.0000 (ε = 0.0314)
+
+ELPD_BLEND
+  ASR (Attack Success Rate): 0.00%
+  Avg Queries: 0.0
+  Avg L∞ perturbation: 0.0000 (ε = 0.0314)
+
+Results saved to outputs/elpd_experiment/results.json
+
+======================================================================
+HYPOTHESIS CHECK: Black-and-White Power-Likelihood
+======================================================================
+
+ELPD-Blend ASR: 0.00%
+MI-FGSM ASR (transfer only): 0.00%
+NES-only ASR (query only): 40.00%
+
+✗ Hypothesis not confirmed yet. Consider tuning ELPD hyperparameters.
+
+Query efficiency (ELPD vs baselines):
+  ELPD-Blend: 0.0 queries
+  Static Hybrid: 0.0 queries

@@ -1,0 +1,25 @@
+{
+  "seed": 42,
+  "datasets": [
+    "cifar10"
+  ],
+  "surrogate_model": "resnet18",
+  "target_model": "vgg16",
+  "num_samples": {
+    "cifar10": 10
+  },
+  "epsilon": 0.03137254901960784,
+  "step_size": 0.00784313725490196,
+  "num_steps": 10,
+  "query_budget": 100,
+  "elpd_method": "waic",
+  "min_samples_for_waic": 6,
+  "n_nes_samples": 4,
+  "nes_sigma": 0.015,
+  "eta_ema_alpha": 0.4,
+  "device_str": null,
+  "output_dir": "./outputs/quick_test",
+  "data_dir": "./data",
+  "batch_size": null,
+  "num_workers": null
+}
